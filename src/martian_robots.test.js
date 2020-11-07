@@ -39,3 +39,13 @@ test('robot turns left when the orientation is East', () => {
   //assert
   expect(position).toBe('1 1 N');
 });
+
+test('robot turns left when the orientation is North', () => {
+  //arrange
+
+  //act
+  const position = move('5 3', '0 0 N', 'L');
+
+  //assert
+  expect(position).toBe('0 0 W');
+});
