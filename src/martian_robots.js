@@ -1,18 +1,28 @@
 function move(coordenates, initialPosition, instructions) {
   const orientation = initialPosition[4];
-  if (instructions === 'F' && orientation === 'N') {
-    return initialPosition[0] + ' ' + (parseInt(initialPosition[2]) + 1) + ' N';
-  } else if (instructions === 'F' && orientation === 'E') {
-    return parseInt(initialPosition[0]) + 1 + ' ' + initialPosition[2] + ' E';
-  } else if (instructions === 'F' && orientation === 'S') {
-    return initialPosition[0] + ' ' + (parseInt(initialPosition[2]) - 1) + ' S';
-  } else if (instructions === 'F' && orientation === 'W') {
-    return parseInt(initialPosition[0]) - 1 + ' ' + initialPosition[2] + ' W';
-  } else if (instructions === 'R') {
+  if (instructions === 'F') {
+    return moveFroward(initialPosition);
+  }
+
+  if (instructions === 'R') {
     return initialPosition.replace(orientation, turnToRight(orientation));
   }
 
   return initialPosition.replace(orientation, turnToLeft(orientation));
+}
+
+function moveFroward(position) {
+  const orientation = position[4];
+
+  if (orientation === 'N') {
+    return position[0] + ' ' + (parseInt(position[2]) + 1) + ' ' + orientation;
+  } else if (orientation === 'S') {
+    return position[0] + ' ' + (parseInt(position[2]) - 1) + ' ' + orientation;
+  } else if (orientation === 'E') {
+    return parseInt(position[0]) + 1 + ' ' + position[2] + ' ' + orientation;
+  } else if (orientation === 'W') {
+    return parseInt(position[0]) - 1 + ' ' + position[2] + ' ' + orientation;
+  }
 }
 
 function turnToLeft(orientation) {
