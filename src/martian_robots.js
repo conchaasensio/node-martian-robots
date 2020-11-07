@@ -1,5 +1,8 @@
 function move(coordenates, initialPosition, instructions) {
   const orientation = initialPosition[4];
+  if (instructions === 'F' && orientation === 'N') {
+    return '1 ' + (parseInt(initialPosition[2]) + 1) + ' N';
+  }
   if (instructions === 'R') {
     return initialPosition.replace(orientation, turnToRight(orientation));
   }

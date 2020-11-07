@@ -90,3 +90,15 @@ describe('robot turns right', () => {
     expect(position).toBe('1 1 N');
   });
 });
+
+describe('robot moves forward', () => {
+  test('robot moves forward when the orientation is North', () => {
+    //arrange
+
+    //act
+    const position = move('5 3', '1 1 N', 'F');
+
+    //assert
+    expect(position).toBe('1 2 N');
+  });
+});
