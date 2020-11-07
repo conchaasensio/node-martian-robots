@@ -4,7 +4,8 @@
   "description": "backend technical test",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "author": "Concha Asensio <conchaasensiomr@gmail.com>",
   "license": "ISC",
