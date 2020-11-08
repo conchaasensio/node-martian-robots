@@ -8,6 +8,10 @@ function move(coordenates, initialPosition, instructions) {
 
 function moveOneInstruction(coordenates, position, instruction) {
   const orientation = position[4];
+  if (position.endsWith('LOST')) {
+    return position;
+  }
+
   if (instruction === 'F') {
     const nextPosition = moveForward(position);
     const splitNextPosition = nextPosition.split(' ');
@@ -17,26 +21,15 @@ function moveOneInstruction(coordenates, position, instruction) {
       splitNextPosition[1] < 0 ||
       splitNextPosition[1] > coordenates[2]
     ) {
-      if (position.endsWith('LOST')) {
-        return position;
-      }
-
       return position + ' LOST';
     }
 
     return nextPosition;
   }
   if (instruction === 'R') {
-    if (position.endsWith(' LOST')) {
-      return position;
-    }
     return position.replace(orientation, turnToRight(orientation));
   }
   if (instruction === 'L') {
-    if (position.endsWith(' LOST')) {
-      return position;
-    }
-
     return position.replace(orientation, turnToLeft(orientation));
   }
 }
