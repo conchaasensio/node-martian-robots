@@ -140,7 +140,9 @@ describe('robot moves forward', () => {
     //assert
     expect(position).toBe('0 1 N');
   });
+});
 
+describe('robot process more than one instruction', () => {
   test('robot moves forward twice when the orientation is North', () => {
     //arrange
 
@@ -149,5 +151,25 @@ describe('robot moves forward', () => {
 
     //assert
     expect(position).toBe('0 2 N');
+  });
+
+  test('robot turns right twice when the orientation is North', () => {
+    //arrange
+
+    //act
+    const position = move('5 3', '0 0 N', 'RR');
+
+    //assert
+    expect(position).toBe('0 0 S');
+  });
+
+  test('robot turns right and moves forward when the orientation is North', () => {
+    //arrange
+
+    //act
+    const position = move('5 3', '0 0 N', 'RF');
+
+    //assert
+    expect(position).toBe('1 0 E');
   });
 });

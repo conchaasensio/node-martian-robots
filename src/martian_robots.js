@@ -1,13 +1,9 @@
 function move(coordenates, initialPosition, instructions) {
-  const orientation = initialPosition[4];
-
-  if (instructions === 'FF' && orientation === 'N') {
-    const firstMovement = moveFroward(initialPosition);
-    return moveFroward(firstMovement);
+  let position = initialPosition;
+  for (let instruction of instructions) {
+    position = moveOneInstruction(position, instruction);
   }
-
-  const instruction = instructions[0];
-  return moveOneInstruction(initialPosition, instruction);
+  return position;
 }
 
 function moveOneInstruction(position, instruction) {
