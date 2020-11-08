@@ -14,6 +14,10 @@ function moveOneInstruction(coordenates, position, instruction) {
     if (splitNextPosition[1] < 0 || splitNextPosition[1] > coordenates[2]) {
       return position + ' LOST';
     }
+    if (splitNextPosition[0] < 0 || splitNextPosition[0] > coordenates[0]) {
+      return position + ' LOST';
+    }
+
     return nextPosition;
   }
   if (instruction === 'R') {
