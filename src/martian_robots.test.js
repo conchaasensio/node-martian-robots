@@ -227,7 +227,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '0 0 W LOST', 'F');
+    const position = move('5 4', '0 0 W', 'FF');
 
     //assert
     expect(position).toBe('0 0 W LOST');
@@ -237,7 +237,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '0 0 W LOST', 'R');
+    const position = move('5 4', '0 0 W', 'FR');
 
     //assert
     expect(position).toBe('0 0 W LOST');
@@ -247,7 +247,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '0 0 W LOST', 'L');
+    const position = move('5 4', '0 0 W', 'FL');
 
     //assert
     expect(position).toBe('0 0 W LOST');

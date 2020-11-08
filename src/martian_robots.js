@@ -1,24 +1,19 @@
 function move(coordenates, initialPosition, instructions) {
   let position = initialPosition;
   for (let instruction of instructions) {
-    position = moveOneInstruction(coordenates, position, instruction);
+    const nextPosition = moveOneInstruction(position, instruction);
+    if (isLost(nextPosition, coordenates)) {
+      return position + ' LOST';
+    }
+    position = nextPosition;
   }
   return position;
 }
 
-function moveOneInstruction(coordenates, position, instruction) {
+function moveOneInstruction(position, instruction) {
   const orientation = position[4];
-  if (position.endsWith('LOST')) {
-    return position;
-  }
-
   if (instruction === 'F') {
-    const nextPosition = moveForward(position);
-    if (isLost(nextPosition, coordenates)) {
-      return position + ' LOST';
-    }
-
-    return nextPosition;
+    return moveForward(position);
   }
   if (instruction === 'R') {
     return position.replace(orientation, turnToRight(orientation));
