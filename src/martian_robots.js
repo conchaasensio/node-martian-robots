@@ -8,13 +8,12 @@ function move(coordenates, initialPosition, instructions) {
 
 function moveOneInstruction(coordenates, position, instruction) {
   const orientation = position[4];
-  const coordenate = coordenates[2];
   if (instruction === 'F') {
-    if (position[2] >= coordenate) {
+    const nextPosition = moveForward(position);
+    if (nextPosition[2] > coordenates[2]) {
       return position + ' LOST';
     }
-
-    return moveForward(position);
+    return nextPosition;
   }
   if (instruction === 'R') {
     return position.replace(orientation, turnToRight(orientation));

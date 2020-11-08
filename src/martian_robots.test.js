@@ -175,7 +175,7 @@ describe('robot process more than one instruction', () => {
 });
 
 describe('world bounds', () => {
-  test('North boundary', () => {
+  test('can move up to North boundary', () => {
     //arrange
 
     //act
@@ -184,7 +184,7 @@ describe('world bounds', () => {
     //assert
     expect(position).toBe('0 4 N');
   });
-  test('exceedes North boundary', () => {
+  test('robot is lost when exceedes North boundary', () => {
     //arrange
 
     //act
@@ -192,5 +192,15 @@ describe('world bounds', () => {
 
     //assert
     expect(position).toBe('0 3 N LOST');
+  });
+
+  test('can move along the North boundary', () => {
+    //arrange
+
+    //act
+    const position = move('5 4', '0 4 E', 'F');
+
+    //assert
+    expect(position).toBe('1 4 E');
   });
 });
