@@ -27,6 +27,9 @@ function moveOneInstruction(coordenates, position, instruction) {
     return nextPosition;
   }
   if (instruction === 'R') {
+    if (position.endsWith(' LOST')) {
+      return position;
+    }
     return position.replace(orientation, turnToRight(orientation));
   }
   if (instruction === 'L') {
