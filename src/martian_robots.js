@@ -1,15 +1,16 @@
 function move(coordenates, initialPosition, instructions) {
   let position = initialPosition;
   for (let instruction of instructions) {
-    position = moveOneInstruction(position, instruction);
+    position = moveOneInstruction(coordenates, position, instruction);
   }
   return position;
 }
 
-function moveOneInstruction(position, instruction) {
+function moveOneInstruction(coordenates, position, instruction) {
   const orientation = position[4];
+  const coordenate = coordenates[2];
   if (instruction === 'F') {
-    if (position[2] >= 3) {
+    if (position[2] >= coordenate) {
       return position + ' LOST';
     }
 

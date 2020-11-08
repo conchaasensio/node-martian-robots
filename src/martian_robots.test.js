@@ -179,10 +179,10 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 3', '0 2 N', 'F');
+    const position = move('5 4', '0 3 N', 'F');
 
     //assert
-    expect(position).toBe('0 3 N');
+    expect(position).toBe('0 4 N');
   });
   test('exceedes North boundary', () => {
     //arrange
