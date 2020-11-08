@@ -1,24 +1,20 @@
 function move(coordenates, initialPosition, instructions) {
   const orientation = initialPosition[4];
+
+  if (instructions === 'FF' && orientation === 'N') {
+    const firstMovement = moveFroward(initialPosition);
+    return moveFroward(firstMovement);
+  }
+
   if (instructions === 'F') {
     return moveFroward(initialPosition);
   }
-
-  if (instructions === 'FF' && orientation === 'N') {
-    return (
-      initialPosition[0] +
-      ' ' +
-      (parseInt(initialPosition[2]) + 2) +
-      ' ' +
-      orientation
-    );
-  }
-
   if (instructions === 'R') {
     return initialPosition.replace(orientation, turnToRight(orientation));
   }
-
-  return initialPosition.replace(orientation, turnToLeft(orientation));
+  if (instructions === 'L') {
+    return initialPosition.replace(orientation, turnToLeft(orientation));
+  }
 }
 
 function moveFroward(position) {
