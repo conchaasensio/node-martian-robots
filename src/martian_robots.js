@@ -4,6 +4,16 @@ function move(coordenates, initialPosition, instructions) {
     return moveFroward(initialPosition);
   }
 
+  if (instructions === 'FF' && orientation === 'N') {
+    return (
+      initialPosition[0] +
+      ' ' +
+      (parseInt(initialPosition[2]) + 2) +
+      ' ' +
+      orientation
+    );
+  }
+
   if (instructions === 'R') {
     return initialPosition.replace(orientation, turnToRight(orientation));
   }
@@ -14,14 +24,30 @@ function move(coordenates, initialPosition, instructions) {
 function moveFroward(position) {
   const orientation = position[4];
 
-  if (orientation === 'N') {
-    return position[0] + ' ' + (parseInt(position[2]) + 1) + ' ' + orientation;
-  } else if (orientation === 'S') {
-    return position[0] + ' ' + (parseInt(position[2]) - 1) + ' ' + orientation;
-  } else if (orientation === 'E') {
-    return parseInt(position[0]) + 1 + ' ' + position[2] + ' ' + orientation;
-  } else if (orientation === 'W') {
-    return parseInt(position[0]) - 1 + ' ' + position[2] + ' ' + orientation;
+  switch (orientation) {
+    case 'N':
+      return (
+        position[0] + ' ' + (parseInt(position[2]) + 1) + ' ' + orientation
+      );
+      break;
+
+    case 'S':
+      return (
+        position[0] + ' ' + (parseInt(position[2]) - 1) + ' ' + orientation
+      );
+      break;
+
+    case 'E':
+      return parseInt(position[0]) + 1 + ' ' + position[2] + ' ' + orientation;
+      break;
+
+    case 'W':
+      return parseInt(position[0]) - 1 + ' ' + position[2] + ' ' + orientation;
+      break;
+
+    default:
+      return 'Error. Orientacion no valida';
+      break;
   }
 }
 

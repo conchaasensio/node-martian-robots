@@ -140,4 +140,14 @@ describe('robot moves forward', () => {
     //assert
     expect(position).toBe('0 1 N');
   });
+
+  test('robot moves forward twice when the orientation is North', () => {
+    //arrange
+
+    //act
+    const position = move('5 3', '0 0 N', 'FF');
+
+    //assert
+    expect(position).toBe('0 2 N');
+  });
 });
