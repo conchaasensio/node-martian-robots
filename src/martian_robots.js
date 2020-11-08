@@ -6,14 +6,20 @@ function move(coordenates, initialPosition, instructions) {
     return moveFroward(firstMovement);
   }
 
-  if (instructions === 'F') {
-    return moveFroward(initialPosition);
+  const instruction = instructions[0];
+  return moveOneInstruction(initialPosition, instruction);
+}
+
+function moveOneInstruction(position, instruction) {
+  const orientation = position[4];
+  if (instruction === 'F') {
+    return moveFroward(position);
   }
-  if (instructions === 'R') {
-    return initialPosition.replace(orientation, turnToRight(orientation));
+  if (instruction === 'R') {
+    return position.replace(orientation, turnToRight(orientation));
   }
-  if (instructions === 'L') {
-    return initialPosition.replace(orientation, turnToLeft(orientation));
+  if (instruction === 'L') {
+    return position.replace(orientation, turnToLeft(orientation));
   }
 }
 
