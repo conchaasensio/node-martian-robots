@@ -11,10 +11,12 @@ function moveOneInstruction(coordenates, position, instruction) {
   if (instruction === 'F') {
     const nextPosition = moveForward(position);
     const splitNextPosition = nextPosition.split(' ');
-    if (splitNextPosition[1] < 0 || splitNextPosition[1] > coordenates[2]) {
-      return position + ' LOST';
-    }
-    if (splitNextPosition[0] < 0 || splitNextPosition[0] > coordenates[0]) {
+    if (
+      splitNextPosition[0] < 0 ||
+      splitNextPosition[0] > coordenates[0] ||
+      splitNextPosition[1] < 0 ||
+      splitNextPosition[1] > coordenates[2]
+    ) {
       return position + ' LOST';
     }
 
