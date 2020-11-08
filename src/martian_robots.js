@@ -33,6 +33,10 @@ function moveOneInstruction(coordenates, position, instruction) {
     return position.replace(orientation, turnToRight(orientation));
   }
   if (instruction === 'L') {
+    if (position.endsWith(' LOST')) {
+      return position;
+    }
+
     return position.replace(orientation, turnToLeft(orientation));
   }
 }

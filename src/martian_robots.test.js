@@ -242,4 +242,14 @@ describe('world bounds', () => {
     //assert
     expect(position).toBe('0 0 W LOST');
   });
+
+  test('robot cannot turn left once it is lost', () => {
+    //arrange
+
+    //act
+    const position = move('5 4', '0 0 W LOST', 'L');
+
+    //assert
+    expect(position).toBe('0 0 W LOST');
+  });
 });
