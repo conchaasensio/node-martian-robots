@@ -7,17 +7,18 @@ function move(coordenates, initialPosition, instructions) {
     }
     position = nextPosition;
   }
+
   return position;
 }
 
 function moveOneInstruction(position, instruction) {
   switch (instruction) {
-    case 'F':
-      return moveForward(position);
-    case 'R':
-      return turnToRight(position);
     case 'L':
       return turnToLeft(position);
+    case 'R':
+      return turnToRight(position);
+    case 'F':
+      return moveForward(position);
   }
 }
 
@@ -35,17 +36,6 @@ function turnToRight(position) {
   return position.replace(orientation, rightRotations[orientation]);
 }
 
-function isLost(position, coordenates) {
-  const splitPosition = position.split(' ');
-
-  return (
-    splitPosition[0] < 0 ||
-    splitPosition[0] > coordenates[0] ||
-    splitPosition[1] < 0 ||
-    splitPosition[1] > coordenates[2]
-  );
-}
-
 function moveForward(position) {
   const movements = {
     N: [0, 1],
@@ -56,10 +46,21 @@ function moveForward(position) {
 
   const orientation = position[4];
   const movement = movements[orientation];
-
   const x = parseInt(position[0]) + movement[0];
   const y = parseInt(position[2]) + movement[1];
+
   return `${x} ${y} ${orientation}`;
+}
+
+function isLost(position, coordenates) {
+  const splitPosition = position.split(' ');
+
+  return (
+    splitPosition[0] < 0 ||
+    splitPosition[0] > coordenates[0] ||
+    splitPosition[1] < 0 ||
+    splitPosition[1] > coordenates[2]
+  );
 }
 
 module.exports = move;
