@@ -17,6 +17,10 @@ function moveOneInstruction(coordenates, position, instruction) {
       splitNextPosition[1] < 0 ||
       splitNextPosition[1] > coordenates[2]
     ) {
+      if (position.endsWith('LOST')) {
+        return position;
+      }
+
       return position + ' LOST';
     }
 
