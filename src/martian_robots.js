@@ -14,13 +14,7 @@ function moveOneInstruction(coordenates, position, instruction) {
 
   if (instruction === 'F') {
     const nextPosition = moveForward(position);
-    const splitNextPosition = nextPosition.split(' ');
-    if (
-      splitNextPosition[0] < 0 ||
-      splitNextPosition[0] > coordenates[0] ||
-      splitNextPosition[1] < 0 ||
-      splitNextPosition[1] > coordenates[2]
-    ) {
+    if (isLost(nextPosition, coordenates)) {
       return position + ' LOST';
     }
 
@@ -32,6 +26,17 @@ function moveOneInstruction(coordenates, position, instruction) {
   if (instruction === 'L') {
     return position.replace(orientation, turnToLeft(orientation));
   }
+}
+
+function isLost(position, coordenates) {
+  const splitPosition = position.split(' ');
+
+  return (
+    splitPosition[0] < 0 ||
+    splitPosition[0] > coordenates[0] ||
+    splitPosition[1] < 0 ||
+    splitPosition[1] > coordenates[2]
+  );
 }
 
 function moveForward(position) {
@@ -68,4 +73,5 @@ function turnToRight(orientation) {
   };
   return leftRotations[orientation];
 }
+
 module.exports = move;
