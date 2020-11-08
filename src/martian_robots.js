@@ -11,16 +11,27 @@ function move(coordenates, initialPosition, instructions) {
 }
 
 function moveOneInstruction(position, instruction) {
-  const orientation = position[4];
   if (instruction === 'F') {
     return moveForward(position);
   }
   if (instruction === 'R') {
-    return position.replace(orientation, turnToRight(orientation));
+    return turnToRight(position);
   }
   if (instruction === 'L') {
-    return position.replace(orientation, turnToLeft(orientation));
+    return turnToLeft(position);
   }
+}
+
+function turnToLeft(position) {
+  const orientation = position[4];
+
+  return position.replace(orientation, turnOrientationToLeft(orientation));
+}
+
+function turnToRight(position) {
+  const orientation = position[4];
+
+  return position.replace(orientation, turnOrientationToRight(orientation));
 }
 
 function isLost(position, coordenates) {
@@ -50,7 +61,7 @@ function moveForward(position) {
   return `${x} ${y} ${orientation}`;
 }
 
-function turnToLeft(orientation) {
+function turnOrientationToLeft(orientation) {
   const leftRotations = {
     N: 'W',
     S: 'E',
@@ -59,7 +70,7 @@ function turnToLeft(orientation) {
   };
   return leftRotations[orientation];
 }
-function turnToRight(orientation) {
+function turnOrientationToRight(orientation) {
   const leftRotations = {
     N: 'E',
     S: 'W',
