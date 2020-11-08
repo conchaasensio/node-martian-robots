@@ -11,14 +11,13 @@ function move(coordenates, initialPosition, instructions) {
 }
 
 function moveOneInstruction(position, instruction) {
-  if (instruction === 'F') {
-    return moveForward(position);
-  }
-  if (instruction === 'R') {
-    return turnToRight(position);
-  }
-  if (instruction === 'L') {
-    return turnToLeft(position);
+  switch (instruction) {
+    case 'F':
+      return moveForward(position);
+    case 'R':
+      return turnToRight(position);
+    case 'L':
+      return turnToLeft(position);
   }
 }
 
