@@ -9,6 +9,10 @@ function move(coordenates, initialPosition, instructions) {
 function moveOneInstruction(position, instruction) {
   const orientation = position[4];
   if (instruction === 'F') {
+    if (position[2] >= 3) {
+      return position + ' LOST';
+    }
+
     return moveForward(position);
   }
   if (instruction === 'R') {

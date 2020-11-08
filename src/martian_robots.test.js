@@ -173,3 +173,24 @@ describe('robot process more than one instruction', () => {
     expect(position).toBe('1 0 E');
   });
 });
+
+describe('world bounds', () => {
+  test('North boundary', () => {
+    //arrange
+
+    //act
+    const position = move('5 3', '0 2 N', 'F');
+
+    //assert
+    expect(position).toBe('0 3 N');
+  });
+  test('exceedes North boundary', () => {
+    //arrange
+
+    //act
+    const position = move('5 3', '0 3 N', 'F');
+
+    //assert
+    expect(position).toBe('0 3 N LOST');
+  });
+});
