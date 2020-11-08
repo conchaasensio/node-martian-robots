@@ -194,13 +194,13 @@ describe('world bounds', () => {
     expect(position).toBe('0 3 N LOST');
   });
 
-  test('can move along the North boundary', () => {
+  test('robot is lost when exceedes South boundary', () => {
     //arrange
 
     //act
-    const position = move('5 4', '0 4 E', 'F');
+    const position = move('5 4', '1 0 S', 'F');
 
     //assert
-    expect(position).toBe('1 4 E');
+    expect(position).toBe('1 0 S LOST');
   });
 });

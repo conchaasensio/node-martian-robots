@@ -10,7 +10,8 @@ function moveOneInstruction(coordenates, position, instruction) {
   const orientation = position[4];
   if (instruction === 'F') {
     const nextPosition = moveForward(position);
-    if (nextPosition[2] > coordenates[2]) {
+    const splitNextPosition = nextPosition.split(' ');
+    if (splitNextPosition[1] < 0 || splitNextPosition[1] > coordenates[2]) {
       return position + ' LOST';
     }
     return nextPosition;
