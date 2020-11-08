@@ -9,7 +9,7 @@ function move(coordenates, initialPosition, instructions) {
 function moveOneInstruction(position, instruction) {
   const orientation = position[4];
   if (instruction === 'F') {
-    return moveFroward(position);
+    return moveForward(position);
   }
   if (instruction === 'R') {
     return position.replace(orientation, turnToRight(orientation));
@@ -19,34 +19,20 @@ function moveOneInstruction(position, instruction) {
   }
 }
 
-function moveFroward(position) {
+function moveForward(position) {
+  const movements = {
+    N: [0, 1],
+    S: [0, -1],
+    E: [1, 0],
+    W: [-1, 0],
+  };
+
   const orientation = position[4];
+  const movement = movements[orientation];
 
-  switch (orientation) {
-    case 'N':
-      return (
-        position[0] + ' ' + (parseInt(position[2]) + 1) + ' ' + orientation
-      );
-      break;
-
-    case 'S':
-      return (
-        position[0] + ' ' + (parseInt(position[2]) - 1) + ' ' + orientation
-      );
-      break;
-
-    case 'E':
-      return parseInt(position[0]) + 1 + ' ' + position[2] + ' ' + orientation;
-      break;
-
-    case 'W':
-      return parseInt(position[0]) - 1 + ' ' + position[2] + ' ' + orientation;
-      break;
-
-    default:
-      return 'Error. Orientacion no valida';
-      break;
-  }
+  const x = parseInt(position[0]) + movement[0];
+  const y = parseInt(position[2]) + movement[1];
+  return `${x} ${y} ${orientation}`;
 }
 
 function turnToLeft(orientation) {
