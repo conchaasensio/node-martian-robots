@@ -23,14 +23,16 @@ function moveOneInstruction(position, instruction) {
 
 function turnToLeft(position) {
   const orientation = position[4];
+  const leftRotations = { N: 'W', S: 'E', E: 'N', W: 'S' };
 
-  return position.replace(orientation, turnOrientationToLeft(orientation));
+  return position.replace(orientation, leftRotations[orientation]);
 }
 
 function turnToRight(position) {
   const orientation = position[4];
+  const rightRotations = { N: 'E', S: 'W', E: 'S', W: 'N' };
 
-  return position.replace(orientation, turnOrientationToRight(orientation));
+  return position.replace(orientation, rightRotations[orientation]);
 }
 
 function isLost(position, coordenates) {
@@ -58,25 +60,6 @@ function moveForward(position) {
   const x = parseInt(position[0]) + movement[0];
   const y = parseInt(position[2]) + movement[1];
   return `${x} ${y} ${orientation}`;
-}
-
-function turnOrientationToLeft(orientation) {
-  const leftRotations = {
-    N: 'W',
-    S: 'E',
-    E: 'N',
-    W: 'S',
-  };
-  return leftRotations[orientation];
-}
-function turnOrientationToRight(orientation) {
-  const leftRotations = {
-    N: 'E',
-    S: 'W',
-    E: 'S',
-    W: 'N',
-  };
-  return leftRotations[orientation];
 }
 
 module.exports = move;
