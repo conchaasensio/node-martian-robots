@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  martian-robots:
+    image: node:12-alpine
+    volumes:
+      - ./:/code:delegated
+    working_dir: /code
+    command: npm run test
