@@ -1,4 +1,4 @@
-const move = require('./martian_robots');
+const { move, moveMultipleRobots } = require('./martian_robots');
 
 describe('robot turns left', () => {
   test('robot turns left when the orientation is North', () => {
@@ -251,5 +251,17 @@ describe('world bounds', () => {
 
     //assert
     expect(position).toBe('0 0 W LOST');
+  });
+});
+
+describe('more than one robot', () => {
+  test('robot 2 moves following instructions', () => {
+    //arrange
+
+    //act
+    const position = moveMultipleRobots(['5 3', '1 1 E', 'RFRFRFRF']);
+
+    //assert
+    expect(position[0]).toBe('1 1 E');
   });
 });

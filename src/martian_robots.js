@@ -1,3 +1,8 @@
+function moveMultipleRobots(input) {
+  const coordenates = input[0];
+  return [move(coordenates, input[1], input[2])];
+}
+
 function move(coordenates, initialPosition, instructions) {
   let position = initialPosition;
   for (let instruction of instructions) {
@@ -63,4 +68,4 @@ function isLost(position, coordenates) {
   );
 }
 
-module.exports = move;
+module.exports = { move, moveMultipleRobots };
