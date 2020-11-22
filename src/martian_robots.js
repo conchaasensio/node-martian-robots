@@ -1,9 +1,10 @@
 function moveMultipleRobots(input) {
   const coordenates = input[0];
-  return [
-    move(coordenates, input[1], input[2]),
-    move(coordenates, input[3], input[4]),
-  ];
+  const positions = [];
+  for (let i = 1; i < input.length; i += 2) {
+    positions.push(move(coordenates, input[i], input[i + 1]));
+  }
+  return positions;
 }
 
 function move(coordenates, initialPosition, instructions) {

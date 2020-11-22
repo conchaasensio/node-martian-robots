@@ -179,10 +179,10 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '0 3 N', 'F');
+    const position = moveMultipleRobots(['5 4', '0 3 N', 'F']);
 
     //assert
-    expect(position).toBe('0 4 N');
+    expect(position[0]).toBe('0 4 N');
   });
   test('robot is lost when exceedes North boundary', () => {
     //arrange
