@@ -272,3 +272,22 @@ describe('more than one robot', () => {
     expect(positions[1]).toBe('3 3 N LOST');
   });
 });
+
+describe('robot leaves a scent when is lost', () => {
+  test('a robot does not get lost in the same position as the previous one', () => {
+    //arrange
+
+    //act
+    const positions = move([
+      '5 3',
+      '3 2 N',
+      'FRRFLLFFRRFLL',
+      '0 3 W',
+      'LLFFFLFLFL',
+    ]);
+
+    //assert
+    expect(positions[0]).toBe('3 3 N LOST');
+    expect(positions[1]).toBe('2 3 S');
+  });
+});

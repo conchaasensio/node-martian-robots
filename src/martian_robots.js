@@ -1,4 +1,6 @@
+let lostPosition;
 function move(input) {
+  lostPosition = '';
   const coordenates = input[0];
   const positions = [];
   for (let i = 1; i < input.length; i += 2) {
@@ -11,7 +13,11 @@ function moveRobot(coordenates, initialPosition, instructions) {
   let position = initialPosition;
   for (let instruction of instructions) {
     const nextPosition = moveOneInstruction(position, instruction);
+    if (lostPosition === nextPosition) {
+      continue; // Ignore the instruction
+    }
     if (isLost(nextPosition, coordenates)) {
+      lostPosition = nextPosition;
       return position + ' LOST';
     }
     position = nextPosition;
