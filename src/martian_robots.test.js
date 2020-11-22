@@ -259,9 +259,16 @@ describe('more than one robot', () => {
     //arrange
 
     //act
-    const position = moveMultipleRobots(['5 3', '1 1 E', 'RFRFRFRF']);
+    const positions = moveMultipleRobots([
+      '5 3',
+      '1 1 E',
+      'RFRFRFRF',
+      '3 2 N',
+      'FRRFLLFFRRFLL',
+    ]);
 
     //assert
-    expect(position[0]).toBe('1 1 E');
+    expect(positions[0]).toBe('1 1 E');
+    expect(positions[1]).toBe('3 3 N LOST');
   });
 });
