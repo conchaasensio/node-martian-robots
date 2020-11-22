@@ -72,4 +72,4 @@ function isLost(position, coordenates) {
   );
 }
 
-module.exports = { moveRobot, move };
+module.exports = move;

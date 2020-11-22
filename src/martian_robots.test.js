@@ -1,54 +1,54 @@
-const { moveRobot, move } = require('./martian_robots');
+const move = require('./martian_robots');
 
 describe('robot turns left', () => {
   test('robot turns left when the orientation is North', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 N', 'L');
+    const positions = move(['5 3', '1 1 N', 'L']);
 
     //assert
-    expect(position).toBe('1 1 W');
+    expect(positions[0]).toBe('1 1 W');
   });
 
   test('robot turns left when the orientation is West', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 W', 'L');
+    const positions = move(['5 3', '1 1 W', 'L']);
 
     //assert
-    expect(position).toBe('1 1 S');
+    expect(positions[0]).toBe('1 1 S');
   });
 
   test('robot turns left when the orientation is South', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 S', 'L');
+    const positions = move(['5 3', '1 1 S', 'L']);
 
     //assert
-    expect(position).toBe('1 1 E');
+    expect(positions[0]).toBe('1 1 E');
   });
 
   test('robot turns left when the orientation is East', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 E', 'L');
+    const positions = move(['5 3', '1 1 E', 'L']);
 
     //assert
-    expect(position).toBe('1 1 N');
+    expect(positions[0]).toBe('1 1 N');
   });
 
   test('robot turns left when the orientation is North', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '0 0 N', 'L');
+    const positions = move(['5 3', '0 0 N', 'L']);
 
     //assert
-    expect(position).toBe('0 0 W');
+    expect(positions[0]).toBe('0 0 W');
   });
 });
 
@@ -57,37 +57,37 @@ describe('robot turns right', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 N', 'R');
+    const positions = move(['5 3', '1 1 N', 'R']);
 
     //assert
-    expect(position).toBe('1 1 E');
+    expect(positions[0]).toBe('1 1 E');
   });
   test('robot turns right when the orientation is East', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 E', 'R');
+    const positions = move(['5 3', '1 1 E', 'R']);
 
     //assert
-    expect(position).toBe('1 1 S');
+    expect(positions[0]).toBe('1 1 S');
   });
   test('robot turns right when the orientation is South', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 S', 'R');
+    const positions = move(['5 3', '1 1 S', 'R']);
 
     //assert
-    expect(position).toBe('1 1 W');
+    expect(positions[0]).toBe('1 1 W');
   });
   test('robot turns right when the orientation is West', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 W', 'R');
+    const positions = move(['5 3', '1 1 W', 'R']);
 
     //assert
-    expect(position).toBe('1 1 N');
+    expect(positions[0]).toBe('1 1 N');
   });
 });
 
@@ -96,49 +96,49 @@ describe('robot moves forward', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 N', 'F');
+    const positions = move(['5 3', '1 1 N', 'F']);
 
     //assert
-    expect(position).toBe('1 2 N');
+    expect(positions[0]).toBe('1 2 N');
   });
 
   test('robot moves forward when the orientation is East', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 E', 'F');
+    const positions = move(['5 3', '1 1 E', 'F']);
 
     //assert
-    expect(position).toBe('2 1 E');
+    expect(positions[0]).toBe('2 1 E');
   });
 
   test('robot moves forward when the orientation is South', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 S', 'F');
+    const positions = move(['5 3', '1 1 S', 'F']);
 
     //assert
-    expect(position).toBe('1 0 S');
+    expect(positions[0]).toBe('1 0 S');
   });
 
   test('robot moves forward when the orientation is West', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '1 1 W', 'F');
+    const positions = move(['5 3', '1 1 W', 'F']);
 
     //assert
-    expect(position).toBe('0 1 W');
+    expect(positions[0]).toBe('0 1 W');
   });
   test('robot moves forward when the orientation is North', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '0 0 N', 'F');
+    const positions = move(['5 3', '0 0 N', 'F']);
 
     //assert
-    expect(position).toBe('0 1 N');
+    expect(positions[0]).toBe('0 1 N');
   });
 });
 
@@ -147,30 +147,30 @@ describe('robot process more than one instruction', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '0 0 N', 'FF');
+    const positions = move(['5 3', '0 0 N', 'FF']);
 
     //assert
-    expect(position).toBe('0 2 N');
+    expect(positions[0]).toBe('0 2 N');
   });
 
   test('robot turns right twice when the orientation is North', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '0 0 N', 'RR');
+    const positions = move(['5 3', '0 0 N', 'RR']);
 
     //assert
-    expect(position).toBe('0 0 S');
+    expect(positions[0]).toBe('0 0 S');
   });
 
   test('robot turns right and moves forward when the orientation is North', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '0 0 N', 'RF');
+    const positions = move(['5 3', '0 0 N', 'RF']);
 
     //assert
-    expect(position).toBe('1 0 E');
+    expect(positions[0]).toBe('1 0 E');
   });
 });
 
@@ -188,69 +188,69 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 3', '0 3 N', 'F');
+    const positions = move(['5 3', '0 3 N', 'F']);
 
     //assert
-    expect(position).toBe('0 3 N LOST');
+    expect(positions[0]).toBe('0 3 N LOST');
   });
 
   test('robot is lost when exceedes South boundary', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 4', '1 0 S', 'F');
+    const positions = move(['5 4', '1 0 S', 'F']);
 
     //assert
-    expect(position).toBe('1 0 S LOST');
+    expect(positions[0]).toBe('1 0 S LOST');
   });
 
   test('robot is lost when exceedes East boundary', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 4', '5 0 E', 'F');
+    const positions = move(['5 4', '5 0 E', 'F']);
 
     //assert
-    expect(position).toBe('5 0 E LOST');
+    expect(positions[0]).toBe('5 0 E LOST');
   });
   test('robot is lost when exceedes West boundary', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 4', '0 0 W', 'F');
+    const positions = move(['5 4', '0 0 W', 'F']);
 
     //assert
-    expect(position).toBe('0 0 W LOST');
+    expect(positions[0]).toBe('0 0 W LOST');
   });
 
   test('robot cannot move forward once it is lost', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 4', '0 0 W', 'FF');
+    const positions = move(['5 4', '0 0 W', 'FF']);
 
     //assert
-    expect(position).toBe('0 0 W LOST');
+    expect(positions[0]).toBe('0 0 W LOST');
   });
 
   test('robot cannot turn right once it is lost', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 4', '0 0 W', 'FR');
+    const positions = move(['5 4', '0 0 W', 'FR']);
 
     //assert
-    expect(position).toBe('0 0 W LOST');
+    expect(positions[0]).toBe('0 0 W LOST');
   });
 
   test('robot cannot turn left once it is lost', () => {
     //arrange
 
     //act
-    const position = moveRobot('5 4', '0 0 W', 'FL');
+    const positions = move(['5 4', '0 0 W', 'FL']);
 
     //assert
-    expect(position).toBe('0 0 W LOST');
+    expect(positions[0]).toBe('0 0 W LOST');
   });
 });
 
