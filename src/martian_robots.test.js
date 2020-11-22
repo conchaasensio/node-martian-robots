@@ -1,11 +1,11 @@
-const { move, moveMultipleRobots } = require('./martian_robots');
+const { moveRobot, move } = require('./martian_robots');
 
 describe('robot turns left', () => {
   test('robot turns left when the orientation is North', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 N', 'L');
+    const position = moveRobot('5 3', '1 1 N', 'L');
 
     //assert
     expect(position).toBe('1 1 W');
@@ -15,7 +15,7 @@ describe('robot turns left', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 W', 'L');
+    const position = moveRobot('5 3', '1 1 W', 'L');
 
     //assert
     expect(position).toBe('1 1 S');
@@ -25,7 +25,7 @@ describe('robot turns left', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 S', 'L');
+    const position = moveRobot('5 3', '1 1 S', 'L');
 
     //assert
     expect(position).toBe('1 1 E');
@@ -35,7 +35,7 @@ describe('robot turns left', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 E', 'L');
+    const position = moveRobot('5 3', '1 1 E', 'L');
 
     //assert
     expect(position).toBe('1 1 N');
@@ -45,7 +45,7 @@ describe('robot turns left', () => {
     //arrange
 
     //act
-    const position = move('5 3', '0 0 N', 'L');
+    const position = moveRobot('5 3', '0 0 N', 'L');
 
     //assert
     expect(position).toBe('0 0 W');
@@ -57,7 +57,7 @@ describe('robot turns right', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 N', 'R');
+    const position = moveRobot('5 3', '1 1 N', 'R');
 
     //assert
     expect(position).toBe('1 1 E');
@@ -66,7 +66,7 @@ describe('robot turns right', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 E', 'R');
+    const position = moveRobot('5 3', '1 1 E', 'R');
 
     //assert
     expect(position).toBe('1 1 S');
@@ -75,7 +75,7 @@ describe('robot turns right', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 S', 'R');
+    const position = moveRobot('5 3', '1 1 S', 'R');
 
     //assert
     expect(position).toBe('1 1 W');
@@ -84,7 +84,7 @@ describe('robot turns right', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 W', 'R');
+    const position = moveRobot('5 3', '1 1 W', 'R');
 
     //assert
     expect(position).toBe('1 1 N');
@@ -96,7 +96,7 @@ describe('robot moves forward', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 N', 'F');
+    const position = moveRobot('5 3', '1 1 N', 'F');
 
     //assert
     expect(position).toBe('1 2 N');
@@ -106,7 +106,7 @@ describe('robot moves forward', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 E', 'F');
+    const position = moveRobot('5 3', '1 1 E', 'F');
 
     //assert
     expect(position).toBe('2 1 E');
@@ -116,7 +116,7 @@ describe('robot moves forward', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 S', 'F');
+    const position = moveRobot('5 3', '1 1 S', 'F');
 
     //assert
     expect(position).toBe('1 0 S');
@@ -126,7 +126,7 @@ describe('robot moves forward', () => {
     //arrange
 
     //act
-    const position = move('5 3', '1 1 W', 'F');
+    const position = moveRobot('5 3', '1 1 W', 'F');
 
     //assert
     expect(position).toBe('0 1 W');
@@ -135,7 +135,7 @@ describe('robot moves forward', () => {
     //arrange
 
     //act
-    const position = move('5 3', '0 0 N', 'F');
+    const position = moveRobot('5 3', '0 0 N', 'F');
 
     //assert
     expect(position).toBe('0 1 N');
@@ -147,7 +147,7 @@ describe('robot process more than one instruction', () => {
     //arrange
 
     //act
-    const position = move('5 3', '0 0 N', 'FF');
+    const position = moveRobot('5 3', '0 0 N', 'FF');
 
     //assert
     expect(position).toBe('0 2 N');
@@ -157,7 +157,7 @@ describe('robot process more than one instruction', () => {
     //arrange
 
     //act
-    const position = move('5 3', '0 0 N', 'RR');
+    const position = moveRobot('5 3', '0 0 N', 'RR');
 
     //assert
     expect(position).toBe('0 0 S');
@@ -167,7 +167,7 @@ describe('robot process more than one instruction', () => {
     //arrange
 
     //act
-    const position = move('5 3', '0 0 N', 'RF');
+    const position = moveRobot('5 3', '0 0 N', 'RF');
 
     //assert
     expect(position).toBe('1 0 E');
@@ -179,7 +179,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = moveMultipleRobots(['5 4', '0 3 N', 'F']);
+    const position = move(['5 4', '0 3 N', 'F']);
 
     //assert
     expect(position[0]).toBe('0 4 N');
@@ -188,7 +188,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 3', '0 3 N', 'F');
+    const position = moveRobot('5 3', '0 3 N', 'F');
 
     //assert
     expect(position).toBe('0 3 N LOST');
@@ -198,7 +198,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '1 0 S', 'F');
+    const position = moveRobot('5 4', '1 0 S', 'F');
 
     //assert
     expect(position).toBe('1 0 S LOST');
@@ -208,7 +208,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '5 0 E', 'F');
+    const position = moveRobot('5 4', '5 0 E', 'F');
 
     //assert
     expect(position).toBe('5 0 E LOST');
@@ -217,7 +217,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '0 0 W', 'F');
+    const position = moveRobot('5 4', '0 0 W', 'F');
 
     //assert
     expect(position).toBe('0 0 W LOST');
@@ -227,7 +227,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '0 0 W', 'FF');
+    const position = moveRobot('5 4', '0 0 W', 'FF');
 
     //assert
     expect(position).toBe('0 0 W LOST');
@@ -237,7 +237,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '0 0 W', 'FR');
+    const position = moveRobot('5 4', '0 0 W', 'FR');
 
     //assert
     expect(position).toBe('0 0 W LOST');
@@ -247,7 +247,7 @@ describe('world bounds', () => {
     //arrange
 
     //act
-    const position = move('5 4', '0 0 W', 'FL');
+    const position = moveRobot('5 4', '0 0 W', 'FL');
 
     //assert
     expect(position).toBe('0 0 W LOST');
@@ -259,7 +259,7 @@ describe('more than one robot', () => {
     //arrange
 
     //act
-    const positions = moveMultipleRobots([
+    const positions = move([
       '5 3',
       '1 1 E',
       'RFRFRFRF',

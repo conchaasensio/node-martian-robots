@@ -1,13 +1,13 @@
-function moveMultipleRobots(input) {
+function move(input) {
   const coordenates = input[0];
   const positions = [];
   for (let i = 1; i < input.length; i += 2) {
-    positions.push(move(coordenates, input[i], input[i + 1]));
+    positions.push(moveRobot(coordenates, input[i], input[i + 1]));
   }
   return positions;
 }
 
-function move(coordenates, initialPosition, instructions) {
+function moveRobot(coordenates, initialPosition, instructions) {
   let position = initialPosition;
   for (let instruction of instructions) {
     const nextPosition = moveOneInstruction(position, instruction);
@@ -72,4 +72,4 @@ function isLost(position, coordenates) {
   );
 }
 
-module.exports = { move, moveMultipleRobots };
+module.exports = { moveRobot, move };
