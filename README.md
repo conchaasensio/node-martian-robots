@@ -1,6 +1,6 @@
 # 🤖 NODE - Martian Robots
 
-This project is a code test for a Back-end developer selection process. The challenge is to create a martian robots simulator.
+The challenge is to create a martian robots simulator.
 
 Sample input:
 
